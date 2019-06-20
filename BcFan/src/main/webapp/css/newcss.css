@@ -1,0 +1,86 @@
+#head_pic , #Login_head_pic{
+	border: solid 1px #999999;
+	margin-top: -5px;
+	border-radius: ;
+	width: 40px;
+	height: 40px;
+	border-radius: 165px;
+	-webkit-border-radius: 165px;
+	-moz-border-radius: 165px;
+	overflow: hidden;
+
+	
+}
+#head_hidden {
+	background-color: white;
+	margin-left: -130px;
+	border: solid 1px #D4D4D4;
+	width: 349px;
+	height: 370px;
+	display: none;
+	position: absolute;
+}
+#head_hidden_pic {
+	position: relative;
+	border: solid 1px;
+	width: 320px;
+	height: 200px;
+	margin-left: 13px;
+	margin-top: -15px;
+	background-color: blue;
+	overflow: hidden;
+}
+#head_hidden_pic ul {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 1300px;
+	height: 200px;
+}
+#head_hidden_pic ul li {
+	float: left;
+	list-style: none;
+}
+#head_login {
+	display: block;
+	height: 43px;
+	line-height: 43px;
+	text-align: center;
+	background: #00a1d6;
+	border-radius: 4px;
+	font-size: 14px;
+	color: #fff;
+	margin-top: 10px;
+	margin-left: 13px;
+	width: 324px;
+}
+#head_log p {
+	margin: 0 auto;
+}
+#head_login {
+	cursor: pointer;
+}
+
+#Login_head_pic {
+	z-index: 100;
+	position: absolute;
+	top: -3.5px;
+}
+#Login_head_hidden {
+	position: absolute;
+	background-color: white;
+	top: 50px;
+	border: solid 1px #D4D4D4;
+	width: 265px;
+	height: 180px;
+	margin-left: -100px;
+	z-index: -1;
+	display: none;
+}
+.Login_after{
+	position: relative;
+}
+#Login_head_hidden a{
+	text-align: left;
+	    line-height: 10px;
+}

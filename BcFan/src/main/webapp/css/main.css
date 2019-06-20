@@ -1,0 +1,410 @@
+body{
+				padding: 0;
+				margin: 0;
+				font-family: PingFangSC-Medium;
+				-webkit-tap-highlight-color:rgba(255,255,255,0);
+			}
+			a{
+				color: #00a1d6;
+    			text-decoration: none;
+    			font-size: 12px;
+			}
+			/*头部开始*/
+			#header{
+				font: 12px 'Helvetica Neue', Helvetica, Arial, 'Microsoft Yahei', 'Hiragino Sans GB', 'Heiti SC', 'WenQuanYi Micro Hei', sans-serif;
+				position: relative;
+				z-index: 10000;
+				background: #fff;
+				
+			}
+			.nav-menu{
+				position: relative;
+				z-index: 200;
+				height: 42px;
+				color: #222;
+			}
+			.nav-wrapper{
+				margin: 0 auto;
+				width: 1000px;
+				height: 42px;
+				min-width:980px;
+				zoom: 1;
+			}
+			.nav-wrapper .fl{
+				float: left;
+				display: inline;
+			}
+			.nav-wrapper ul{
+				list-style: none;
+			}
+			.nav-wrapper ul .nav-item{
+				float: left;
+				text-align: center;
+				line-height: 42px;
+				position: relative;
+				background-color: rgba(255, 255, 255, 0);
+
+			}
+			.nav-wrapper .fl ul .home{
+				margin-left:-10px;
+				padding-left: 12px;
+			}
+			.nav-item a{
+				text-decoration: none;
+			}
+			.nav-item .t{
+				color: #222;
+				height: 100%;
+				display: block;
+				padding: 0 7px;
+			}
+			.t .tv{
+				position: absolute;
+				top: 12px;
+				left: -8px;
+				width: 20px;
+				height: 21px;
+				/*background-color: red;*/
+				font-size: 20px;
+				/*background-position: 924px 94px;*/
+				background-image: url(../img/tv.png);
+				background-repeat: no-repeat;
+			}
+			.nav-wrapper .fr{
+				float: right;
+				display: inline;
+			}
+			.t .i-face{
+				/*position: absolute;*/
+				z-index: 20;
+				width: 32px;
+				height: 32px;
+				left: 0;
+				top: 0;
+			}
+			.i-face img{
+				border: 0 solid #fff;
+				width: 100%;
+				height: 100%;
+				border-radius: 50%;
+			}
+			.nav-wrapper .fr ul.profile-info{
+				width: 46px;
+			}
+			.nav-search-box{
+				position: relative;
+				float: right;
+				margin: 13px -30px 0 0;
+			}
+			.nav-search{
+				position: absolute;
+				width: 160px;
+				right: 20px;
+			}
+			#nav_searchform{
+				border-radius: 5px;
+				background-color: #f4f4f4;
+				border: 0px solid #e7e7e7;
+				padding: 0 30px 0 8px;
+			}
+			.nav-search-keyword{
+				color: #999;
+    			font-size: 12px;
+    			overflow: hidden;
+    			width: 100%;
+    			height: 28px;
+    			line-height: 28px;
+    			border: none;
+    			box-shadow: none;
+    			background-color: transparent;
+    			opacity: 0;
+    			transition: all 0.2s;
+    			opacity: 1;
+    			outline: none;
+			}
+			.nav-search-submit{
+				/*color: #999;
+    			font-size: 18px;*/
+    			top: 5px;
+    			right: 7px;
+    			position: absolute;
+    			cursor: pointer;
+    			margin: 0;
+    			padding: 0;
+    			border: none;
+    			/*background: none;*/
+    			transition: all 0.2s;
+    			background-image: url(../img/nav-serach.png);
+    			width: 18px;
+    			height: 20px;
+			}
+			/*头部结束*/
+			/*中间部分开始*/
+			.top-banner{
+				background: #00a0d8;
+    			height: 86px;
+    			text-align: center;
+    			margin-bottom: 20px;
+    			margin-top: 7px;
+			}
+			.top-banner img{
+				border: 0;
+				margin-top: -5px;
+			}
+			.title-line{
+				/*width: 980px;*/
+				width: 51%;
+    			height: 28px;
+    			margin: 0 auto;
+    			border-bottom: 1px solid #ddd;
+    			margin-bottom: 28px;
+    			text-align: center;
+			}
+			.tit{
+				height: 56px;
+    			line-height: 56px;
+   	 			margin: 0 auto;
+    			padding: 0 20px;
+    			background: #fff;
+    			text-align: center;
+    			font-size: 38px;
+			}
+			.login-box,.regitser-box{
+				/*width: 980px;*/
+    			margin: 0 auto;
+   				padding: 60px 0;
+			}
+			.form-group{
+				width: 420px;
+    			margin: 0 auto;
+    			font-size: 12px;
+    			position: relative;
+    			/*height: 20px;*/
+			}
+			.el-input{
+				position: relative;
+    			font-size: 14px;
+    			display: inline-block;
+    			width: 100%;
+			}
+			.el-input__inner{
+				-webkit-appearance: none;
+    			background-color: #fff;
+    			background-image: none;
+    			border-radius: 4px;
+   		 		border: 1px solid #dcdfe6;
+				box-sizing: border-box;
+    			color: #606266;
+    			display: inline-block;
+    			font-size: inherit;
+    			height: 40px;
+    			line-height: 40px;
+    			outline: 0;
+    			padding: 0 15px;
+				transition: border-color .2s cubic-bezier(.645,.045,.355,1);
+    			width: 100%;
+			}
+			.error-message{
+				color: #f45d90;
+    			position: absolute;
+    			right: -20px;
+    			top: 3px;
+    			transform: translate3d(100%,0,0);
+    			font-size: 12px;
+			}
+			.hidden-group{
+				width: 420px;
+    			height: 30px;
+   	 			margin: 0 auto;
+   	 			font-size: 14px;
+    			/*color: #99a2aa;*/
+    			color: #f45d90;;
+				line-height: 30px;
+			}
+			.member{
+				margin: 10px auto;
+    			color: #717171;
+    			width: 420px;
+    			height: 16px;
+    			font-size: 12px;
+			}
+			.member a{
+				float: right;
+				color:  #00a1d6;
+				text-decoration: none;
+			}
+			.not-check{
+				margin-right:10px;
+			}
+			.btn-box{
+				width: 420px;
+				margin: 0 auto;
+			}
+			.btn{
+    			display: inline-block;
+    			height: 36px;
+    			border-radius: 2px;
+    			width: 184px;
+    			line-height: 38px;
+    			font-size: 14px;
+   			 	text-align: center;
+    			cursor: pointer;
+    			/*transition: all .3s;*/
+			}
+			.btn-login{
+				border: 1px solid #0381aa;
+    			color: #fff;
+    			background-color: #00a7de;
+			}
+			.btn-login:hover{
+				background-color: #00BEE7;
+			}
+			.btn-reg{
+				margin-left: 47px;
+				border: 1px solid #ccc;
+				color: #555;
+				background-color: #fff;
+			}
+			.btn-reg:hover{
+				background-color: #F7F7F7;
+			}
+			/*中间部分结束*/
+			/*底部开始*/
+			#footer{
+				width: 100%;
+    			padding-top: 20px;
+    			color: #99a2aa;
+    			text-align: center;
+    			font-size: 12px;
+    			/*position: absolute;
+    			bottom: 0;*/
+			}
+			.footer-wrp{
+				background-color: #f6f9fa;
+    			padding-top: 40px;
+    			padding-bottom: 60px;
+   				height:220px; 			
+   			}
+			.footer-cnt{
+				margin: 0 auto;
+				zoom: 1;
+			}
+			.boston-postcards{
+				list-style: none;
+    			margin: 0 auto;
+    			float: left;
+    			margin-bottom: 30px;
+			}
+			.boston-postcards li{
+				float: left;
+    			text-align: left;
+    			list-style: none;
+				height: 112px;
+			    line-height: 1;
+				font-size: 14px;
+				border-left: solid 1px #e5e9ef;
+			}
+			.tips{
+			    margin-bottom: 22px;	
+			}
+			.cards{
+				float: left;
+    			width: 100px;
+    			position: relative;
+    			margin-bottom: 16px;
+			}
+			#footer a{
+				color: #222;
+			    outline: none;
+    			text-decoration: none;
+    			cursor: pointer;
+    			white-space: nowrap;	
+			}
+			/*底部结束*/
+			.el-btn{
+				display: inline-block;
+    			line-height: 1;
+    			cursor: pointer;
+    			border: 1px solid #dcdfe6;
+    			-webkit-appearance: none;
+    			text-align: center;
+    			box-sizing: border-box;
+    			outline: 0;
+    			margin: 0;
+    			transition: .1s;
+    			font-weight: 500;
+    			font-size: 14px;
+    			border-radius: 4px;
+			}
+			.btn-full{
+				width: 100%;
+    			height: 40px;	
+			}
+			.btn-primary{
+				border: 1px solid #00a1d6;
+				color:#fff;
+				background-color:  #00a7de;
+			}
+			.btn-primary:hover{
+				background-color: #00BEE7;
+			}
+			.yzm-btn{
+				color: #fff;
+    			background-color: #00a1d6;
+    			border-color: #00a1d6;
+    			width: 130px;
+    			height: 36px;
+    			position: absolute;
+    			right: 2px;
+    			top: 2px;
+    			padding: 0 4px;
+    			overflow: hidden;
+    			text-overflow: ellipsis;
+    			white-space: nowrap;
+    			color: #fff;
+			}
+			.yzm-change{
+				color: rgba(0,0,0,.25);
+    			background-color: #f5f5f5;
+    			border-color: #d9d9d9;
+			}
+			.form-group-title{
+				position: absolute;
+    			right: 365px;
+    			top: 11px;
+    			font-size: 14px;
+    			color: #222;
+    			line-height: 18px;
+    			width: 70px;
+    			text-align: right;
+			}
+			.hidden{
+				display: none;
+			}
+			.show{
+				display: block;
+			}
+			.verify-code {
+				width: 250px;
+    			margin-right: 12px;
+			}
+			/*.yzm-btn:hover{
+				background-color: #00BEE7;
+			}*/
+			@media screen and (min-width: 1400px){
+				.footer-cnt {
+    				width:900px;
+				}
+				#footer .boston-postcards li:first-child {
+    			border-left: 0;
+    			padding-left: 0!important;
+				}
+				#footer .boston-postcards li {
+    			padding-right: 40px;
+    			padding-left: 39px;
+    			width: 360px;
+    			}	
+    			#footer .boston-postcards li .cards {
+    			width: 120px;
+				}
+			}
