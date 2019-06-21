@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.multipart.maxSize" value="9000000000"/>
+ 	<package name="first" namespace="/" extends="struts-default">
+		<!-- 检查登录-->
+		<action name="checkLogin" class="userAction" method="checkLogin">
+			<result type="redirect">/login.jsp</result>
+			<result name="login" type="redirect">/login.jsp</result>
+		</action>
+		
+		<!-- 退出登录 -->
+		<action name="logout" class="userAction" method="logout">
+			<result>/login.jsp</result>
+		</action>
+		<!-- 用户注册 -->
+		<action name="register" class="userAction" method="register">
+			<result name="success" type="redirect">/buffer.jsp</result>
+		</action>
+		<!-- 上传 -->
+		<action name="insertVedioAction" class="vedioAction" method="insertVedioAction">
+<!-- 		  <interceptor-ref name="insertVedioAction">  
+               <param name="maximumSize">5242880</param>  
+           </interceptor-ref>   -->
+         <interceptor-ref name="defaultStack"/>         
+			<result>/login.jsp</result>	
+		</action>
+		<!-- 视频type类型 -->
+		<action name="showAlltype" class="vediotypeAction" method="showAlltype">
+			<result type="redirect">/UpLoad.jsp</result>
+		</action>
+		
+		<action name="test" class="testaction" method="test">
+				<result></result>
+		</action>
+		
+	</package> 
+	<package name="second" namespace="/" extends="json-default">
+		<!-- 检查登录 -->
+		<!-- <action name="checkLogin" class="userAction" method="checkLogin">
+			<result name="success" type="json">
+				<param name="includeProperties">message</param>
+			</result>
+		</action> -->
+		<!-- 检查登录状态 -->
+		<action name="checkLoginStatus" class="userAction" method="checkLoginStatus">
+			<result name="success" type="json">
+				<param name="includeProperties">message</param>
+				<param name="includeProperties">sessionId</param>
+			</result>
+		</action>
+		<!-- 检查用户名是否合法 -->
+		<action name="checkUsername" class="userAction" method="checkUsername">
+			<result name="success" type="json">
+				<param name="includeProperties">message</param>
+			</result>
+		</action>
+		<!-- 检查邀请码是否合法 -->
+		 <action name="checkBcNum" class="bcNumAction" method="checkBcNum">
+			<result name="success" type="json">
+				<param name="includeProperties">message</param>
+			</result>
+		</action>
+		<!-- 检查手机号是否合法 -->
+		<action name="checkTel" class="userAction" method="checkTel">
+			<result name="success" type="json">
+				<param name="includeProperties">message</param>
+			</result>
+		</action>
+		<!-- 发送验证码 -->
+		<action name="sendYzm" class="userAction" method="sendYzm">
+			<result name="success" type="json">
+				<param name="includeProperties">code</param>
+			</result>
+		</action>
+		<!-- 修改密码 -->
+		<action name="updatePwd" class="userAction" method="updatePwd">
+			<result name="success" type="json">
+				<param name="includeProperties">message</param>
+			</result>
+		</action>
+		<!-- 修改用户信息 -->
+		<action name="modifyUser" class="userAction" method="modifyUser">
+			<result name="success" type="json">
+				<param name="includeProperties">message</param>
+			</result>
+		</action>
+	</package>
+	
+	
+</struts>    
