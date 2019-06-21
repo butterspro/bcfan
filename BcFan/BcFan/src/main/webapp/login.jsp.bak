@@ -1,0 +1,187 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+	<!--头部开始-->
+	<div id="header">
+		<div class="nav-menu">
+			<div class="nav-wrapper">
+				<!--导航开始-->
+				<div class="fl">
+					<ul>
+						<li class="nav-item home"><a href="#" class="t" title="主站">
+								<i class="tv"> </i> 主站
+						</a></li>
+						<li class="nav-item"><a href="#" class="t" title="音频">音频</a>
+						</li>
+						<li class="nav-item"><a href="#" class="t" title="游戏中心">游戏中心</a>
+						</li>
+						<li class="nav-item"><a href="#" class="t" title="直播">直播</a>
+						</li>
+						<li class="nav-item"><a href="#" class="t" title="会员购">会员购</a>
+						</li>
+						<li class="nav-item"><a href="#" class="t" title="漫画">漫画</a>
+						</li>
+						<li class="nav-item"><a href="#" class="t" title="BW">BW</a>
+						</li>
+					</ul>
+				</div>
+				<!--导航结束-->
+				<div class="fr">
+					<ul>
+						<li class="nav-item profile-info"><a href="#" class="t">
+								<div class="i-face">
+									<img src="img/akari.jpg" />
+
+								</div>
+
+						</a></li>
+						<li class="nav-item"><a href="#" class="t">历史</a></li>
+					</ul>
+				</div>
+				<div class="fr">
+					<div class="nav-search-box">
+						<div class="nav-search ">
+							<form id="nav_searchform">
+								<input type="text" class="nav-search-keyword"
+									placeholder="命运之夜,黑暗将至" />
+								<button type="submit" class="nav-search-submit"></button>
+
+							</form>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--头部结束-->
+	<!--中间部分开始-->
+	<div id="main">
+		<div class="top-banner">
+			<img src="img/top_banner.png" />
+		</div>
+		<div class="title-line">
+			<span class="tit">登录</span>
+		</div>
+		<div class="login-box">
+			<form id="login_form">
+				<div class="form-group" action="checkLogin">
+					<div class="el-input">
+						<input type="text" name="telOrName" placeholder="你的手机号/用户名"
+							class="el-input__inner" id="telOrName"/>
+					</div>
+					<p class="error-message"></p>
+				</div>
+				<div class="hidden-group"></div>
+				<div class="form-group">
+					<div class="el-input">
+						<input type="text" name="u.upassword" placeholder="密码"
+							class="el-input__inner" id="password"/>
+					</div>
+					<p class="error-message"></p>
+				</div>
+				<div class="hidden-group"></div>
+				<div class="member">
+					<a href="#">忘记密码?</a> <a href="#" class="not-check">无法验证?</a>
+				</div>
+				<div class="btn-box">
+					<button class="btn btn-login">登录</button>
+					<button class="btn btn-reg">注册</button>
+				</div>
+			</form>
+
+		</div>
+	</div>
+	<!--中间部分结束-->
+	<!--底部开始-->
+	<div id="footer">
+		<div class="footer-wrp">
+			<div class="footer-cnt">
+				<ul class="boston-postcards">
+					<li>
+						<div class="tips">BcFun</div>
+						<div class="cards">
+							<a href="javascrpit:void(0)">关于我们</a>
+						</div>
+						<div class="cards">
+							<a href="javascrpit:void(0)">联系我们</a>
+						</div>
+						<div class="cards">
+							<a href="javascrpit:void(0)">加入我们</a>
+						</div>
+						<div class="cards">
+							<a href="javascrpit:void(0)">友情链接</a>
+						</div>
+						<div class="cards">
+							<a href="javascrpit:void(0)">BcFun认证</a>
+						</div>
+						<div class="cards">
+							<a href="javascrpit:void(0)">Investor Relations</a>
+						</div>
+
+					</li>
+					<li>
+						<div class="tips">传送门</div>
+						<div class="cards">
+							<a href="javascrpit:void(0)">帮助中心</a>
+						</div>
+						<div class="cards">
+							<a href="javascrpit:void(0)">高级弹幕</a>
+						</div>
+						<div class="cards">
+							<a href="javascrpit:void(0)">活动专题页</a>
+						</div>
+						<div class="cards">
+							<a href="javascrpit:void(0)">侵权申述</a>
+						</div>
+						<div class="cards">
+							<a href="javascrpit:void(0)">活动中心</a>
+						</div>
+						<div class="cards">
+							<a href="javascrpit:void(0)">用户反馈论坛</a>
+						</div>
+						<div class="cards">
+							<a href="javascrpit:void(0)">壁纸站</a>
+						</div>
+						<div class="cards">
+							<a href="javascrpit:void(0)">名人堂</a>
+						</div>
+						<div class="cards">
+							<a href="javascrpit:void(0)">转车号服务中心</a>
+						</div>
+					</li>
+				</ul>
+				<div>2019 &copy; BcFun</div>
+			</div>
+		</div>
+	</div>
+	<!--底部结束-->
+	<script type="text/javascript" src="plugins/jquery-3.1.1.min.js" ></script>
+	<script src="js/main.js"></script>	
+	<script>
+		$(".btn-login").click(function(){
+			var telOrName=$("#telOrName").val();
+			var password=$("#password").val();
+			$.ajax({
+				url:'checkLogin',
+				type:'json',
+				dataType:'json',
+				data:{
+					'telOrName':telOrName,
+					'u.upassword':password
+				},
+				success:function(data){
+					alert(data.msg);
+				}
+			});
+		})
+	</script>
+</body>
+</html>

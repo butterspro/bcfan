@@ -1,0 +1,55 @@
+#rigister_form .hidden-group{
+    height: 40px;
+}
+.el-input-group{
+	line-height: normal;
+    display: inline-table;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    /*height: 40px;*/
+}
+.el-input-group-prepend{
+	line-height: normal;
+    display: inline-table;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    height: 40px;
+}
+.el-input-group__prepend{
+	background-color: #fff;
+    color: #909399;
+    vertical-align: middle;
+    display: table-cell;
+    position: relative;
+    border: 1px solid #dcdfe6;
+    border-radius: 4px;
+    padding: 0 20px;
+    width: 1px;
+    white-space: nowrap;
+    border-right: 0;
+	border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.el-select{
+	display: inline-block;
+    margin: -10px -20px;
+    position: relative;
+    text-align: center;
+}
+.el-input__inner{
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+.text-right{
+	line-height: 40px;
+    text-align: right;
+}
+.text-right a{
+	font-size: 12px;
+	border: none;
+    color: #00a1d6;
+    text-decoration: none;
+}
