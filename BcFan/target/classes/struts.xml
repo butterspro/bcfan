@@ -33,8 +33,12 @@
 		<action name="test" class="testaction" method="test">
 				<result></result>
 		</action>
-		
+		<!--获取某视频的所有弹幕-->
+		<!-- <action name="barrageAction" class="barrageAction" method="getAllBarrageByVid">
+			<result type="redirect">/vedioMain.jsp</result>
+		</action> -->
 	</package> 
+	<!-- 以下ajax -->
 	<package name="second" namespace="/" extends="json-default">
 		<!-- 检查登录 -->
 		<!-- <action name="checkLogin" class="userAction" method="checkLogin">
@@ -83,6 +87,18 @@
 		<action name="modifyUser" class="userAction" method="modifyUser">
 			<result name="success" type="json">
 				<param name="includeProperties">message</param>
+			</result>
+		</action>
+		<!-- 从数据库获得弹幕传到前端显示 -->
+		<action name="barrageAction" class="barrageAction" method="getAllBarrageByVid">
+			<result type="json">
+				<param name="includeProperties">str</param>
+			</result>
+		</action>
+		<!-- 把弹幕存到数据库 -->
+		<action name="setBarrageByVid" class="barrageAction" method="setBarrageByVid">
+			<result type="json">
+				<param name="includeProperties">str</param>
 			</result>
 		</action>
 	</package>

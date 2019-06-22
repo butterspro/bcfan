@@ -6,12 +6,18 @@ import com.BcFan.entity.Vedio;
 import com.BcFan.util.PageBean;
 
 public interface VedioDao {
-	//²éÑ¯ËùÓĞÊÓÆµ
+	// ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æµ
 	public List<Vedio> queryAllVedio();
-	//·ÖÒ³²éÑ¯
+
+	// ï¿½ï¿½Ò³ï¿½ï¿½Ñ¯
 	public PageBean queryVedioByData(String data);
-	//²éÑ¯ÓÃ»§µÄÊÓÆµ
+
+	// ï¿½ï¿½Ñ¯ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Æµ
 	public List<Vedio> queryVedioByUid(int uid);
-	//²åÈëÒ»¸öÊÓÆµ
-		public Vedio InsertVedio(Vedio vedio,int typeId,int uid);
+
+	// ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Æµ
+	public Vedio InsertVedio(Vedio vedio, int typeId, int uid);
+	
+	//è·å–æŸè§†é¢‘çš„ä¿¡æ¯
+	public Vedio queryVedio(int vid);
 }

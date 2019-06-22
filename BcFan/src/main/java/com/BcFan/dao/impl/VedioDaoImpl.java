@@ -3,6 +3,7 @@ package com.BcFan.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +61,16 @@ public class VedioDaoImpl implements VedioDao {
 	public List<Vedio> queryVedioByUid(int uid) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public Vedio queryVedio(int vid) {
+		// TODO Auto-generated method stub
+		Session session=sessionFactory.getCurrentSession();
+		Query query = session.createQuery("from Vedio as v where v.vid=:vid");
+		query.setInteger("vid", vid);
+		Vedio vedio = (Vedio) query.uniqueResult();
+		return vedio;
 	}
 
 }
