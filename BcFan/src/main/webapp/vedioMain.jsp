@@ -5,13 +5,12 @@
 <head>
 <meta charset="uft-8">
 <title>Insert title here</title>
-</head>
 <link rel="stylesheet" href="css/danmuplayer.css" />
 <link rel="stylesheet" href="css/vedioMain.css" />
 <link rel="stylesheet" href="css/bootstrap.min.css" />
-<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="js/danmuplayer.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
+</head>
+
+
 
 <body>
 	<div class="body-main">
@@ -304,6 +303,9 @@
 		</div>
 	</div>
 </body>
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="js/danmuplayer.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script>
 	$("#danmu")
 			.danmuplayer(

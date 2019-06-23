@@ -61,9 +61,9 @@
 										</ul>
 									</div>
 									<div id="head_log">
-										<button id="head_login">登录</button>
+										<a id="head_login">登录</a>
 										<p>
-											首次使用？点我去<a>注册</a>
+											首次使用？点我去<a href="register.jsp">注册</a>
 										</p>
 									</div>
 								</div>
@@ -71,7 +71,7 @@
 							<!--登录后-->
 							<div class="Login_after" <c:if test="${loginUser==null}">style="display: none;"</c:if>>
 								<div id="Login_head_pic">
-									<img id="Login_head_img" src="img/akari.jpg"
+									<img id="Login_head_img" src="${loginUser.picPath}"
 										style="width: 40px; height: 40px;" />
 								</div>
 								<div id="Login_head_hidden">
@@ -93,12 +93,12 @@
 				<div class="fr">
 					<div class="nav-search-box">
 						<div class="nav-search ">
-							<form id="nav_searchform">
+							<!-- <form id="nav_searchform"> -->
 								<input type="text" class="nav-search-keyword"
-									placeholder="命运之夜,黑暗将至" />
-								<button type="submit" class="nav-search-submit"></button>
+									placeholder="命运之夜,黑暗将至"  id="searchData"/>
+								<button  class="nav-search-submit"></button>
 
-							</form>
+							<!-- </form> -->
 						</div>
 					</div>
 
@@ -261,6 +261,14 @@
 		//跳转注册界面
 		$('.btn-reg').click(function() {
 			location.replace('register.jsp');
+		});
+		//搜索
+		$('.nav-search-submit').click(function(){
+			var searchData=$('#searchData').val();
+			if(searchData==""){
+				searchData=$('#searchData').attr('placeholder');
+			}
+			location.href="search.jsp?searchData="+searchData+"&typeName=";
 		});
 	</script>
 </body>

@@ -1,18 +1,11 @@
 package com.BcFan.entity;
 
-import java.io.Serializable;
-
-public class Test implements Serializable{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class Test {
 	private String text;
 	private String color;
-	private int size;
-	private int position;
 	private int time;
-	private String isnew;
+	private String position;
+	private String size;
 
 	public String getText() {
 		return text;
@@ -30,22 +23,6 @@ public class Test implements Serializable{
 		this.color = color;
 	}
 
-	public int getSize() {
-		return size;
-	}
-
-	public void setSize(int size) {
-		this.size = size;
-	}
-
-	public int getPosition() {
-		return position;
-	}
-
-	public void setPosition(int position) {
-		this.position = position;
-	}
-
 	public int getTime() {
 		return time;
 	}
@@ -54,22 +31,29 @@ public class Test implements Serializable{
 		this.time = time;
 	}
 
-	public String getIsnew() {
-		return isnew;
+	public String getPosition() {
+		return position;
 	}
 
-	public void setIsnew(String isnew) {
-		this.isnew = isnew;
+	public void setPosition(String position) {
+		this.position = position;
 	}
 
-	public Test(String text, String color, int size, int position, int time, String isnew) {
+	public String getSize() {
+		return size;
+	}
+
+	public void setSize(String size) {
+		this.size = size;
+	}
+
+	public Test(String text, String color, int time, String position, String size) {
 		super();
 		this.text = text;
 		this.color = color;
-		this.size = size;
-		this.position = position;
 		this.time = time;
-		this.isnew = isnew;
+		this.position = position;
+		this.size = size;
 	}
 
 	public Test() {

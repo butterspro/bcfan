@@ -2,12 +2,9 @@ package com.BcFan.action;
 
 import java.util.Map;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.catalina.User;
-import org.apache.jasper.compiler.SmapUtil;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +12,7 @@ import org.springframework.stereotype.Controller;
 
 import com.BcFan.biz.UserBiz;
 import com.BcFan.entity.Users;
-import com.BcFan.util.QueryCookie;
 import com.BcFan.util.SmsUtil;
-import com.aliyuncs.exceptions.ClientException;
-import com.opensymphony.xwork2.ActionContext;
 
 @Controller("userAction")
 public class UserAction implements SessionAware {
@@ -49,8 +43,8 @@ public class UserAction implements SessionAware {
 	}
 	//检查登录状态
 	public String checkLoginStatus() {
-		Users u= (Users) session.get("loginUser");
-		String error=(String) session.get("error");
+		/*Users u= (Users) session.get("loginUser");
+		String error=(String) session.get("error");*/
 		sessionId=(String) session.get("sessionId");
 		/*if(u==null&&error!=null) {//被挤下线
 			message="logout";
@@ -98,7 +92,7 @@ public class UserAction implements SessionAware {
 	}
 	//发送手机验证码
 	public String sendYzm() {
-		String tel=u.getTel();
+		/*String tel=u.getTel();*/
 		code=SmsUtil.getRandomSMSCode(6, true);
 		System.out.println("验证码"+code);
 		//发送验证码

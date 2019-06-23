@@ -1,7 +1,5 @@
 package com.BcFan.entity;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,11 +17,22 @@ public class Barrage {
 	@ManyToOne(targetEntity = Vedio.class)
 	@JoinColumn(name = "vid")
 	private Vedio vedio;
-	private String barrageContent;
+	private String text;
 	@ManyToOne(targetEntity = Users.class)
 	@JoinColumn(name = "uid")
 	private Users user;
-	private Date barrageTime;
+	private String color;
+	private int time;
+	private String position;
+	private String size;
+
+	public int getBid() {
+		return bid;
+	}
+
+	public void setBid(int bid) {
+		this.bid = bid;
+	}
 
 	public Vedio getVedio() {
 		return vedio;
@@ -33,12 +42,12 @@ public class Barrage {
 		this.vedio = vedio;
 	}
 
-	public String getBarrageContent() {
-		return barrageContent;
+	public String getText() {
+		return text;
 	}
 
-	public void setBarrageContent(String barrageContent) {
-		this.barrageContent = barrageContent;
+	public void setText(String text) {
+		this.text = text;
 	}
 
 	public Users getUser() {
@@ -49,20 +58,47 @@ public class Barrage {
 		this.user = user;
 	}
 
-	public Date getBarrageTime() {
-		return barrageTime;
+	public String getColor() {
+		return color;
 	}
 
-	public void setBarrageTime(Date barrageTime) {
-		this.barrageTime = barrageTime;
+	public void setColor(String color) {
+		this.color = color;
 	}
 
-	public Barrage(Vedio vedio, String barrageContent, Users user, Date barrageTime) {
+	public int getTime() {
+		return time;
+	}
+
+	public void setTime(int time) {
+		this.time = time;
+	}
+
+	public String getPosition() {
+		return position;
+	}
+
+	public void setPosition(String position) {
+		this.position = position;
+	}
+
+	public String getSize() {
+		return size;
+	}
+
+	public void setSize(String size) {
+		this.size = size;
+	}
+
+	public Barrage(Vedio vedio, String text, Users user, String color, int time, String position, String size) {
 		super();
 		this.vedio = vedio;
-		this.barrageContent = barrageContent;
+		this.text = text;
 		this.user = user;
-		this.barrageTime = barrageTime;
+		this.color = color;
+		this.time = time;
+		this.position = position;
+		this.size = size;
 	}
 
 	public Barrage() {

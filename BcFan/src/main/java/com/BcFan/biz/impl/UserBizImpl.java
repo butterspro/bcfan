@@ -8,6 +8,7 @@ import com.BcFan.biz.UserBiz;
 import com.BcFan.dao.BcNumDao;
 import com.BcFan.dao.UserDao;
 import com.BcFan.entity.Users;
+import com.BcFan.util.PageBean;
 
 @Service
 @Transactional
@@ -31,12 +32,12 @@ public class UserBizImpl implements UserBiz {
 		// TODO Auto-generated method stub
 		u.setPicPath("img/akari.jpg");
 		userDao.insertUser(u);
-		//É¾³ýÑûÇëÂë
+		//É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		bcNumDao.deleteBcNum(bcNum);
 	}
 	public void modifyUser(Users u) {
 		// TODO Auto-generated method stub
-		//¸ù¾ÝÊÖ»úºÅ²éÑ¯ÓÃ»§
+		//ï¿½ï¿½ï¿½ï¿½ï¿½Ö»ï¿½ï¿½Å²ï¿½Ñ¯ï¿½Ã»ï¿½
 		
 		userDao.updateUser(u);
 	}
@@ -61,6 +62,19 @@ public class UserBizImpl implements UserBiz {
 	public void modifyUserInfo(Users u) {
 		// TODO Auto-generated method stub
 		userDao.updateUserByUnameAndBirthdayAndSexAndSign(u);
+	}
+	@Override
+	public PageBean getUsersListBySearchData(PageBean p, String searchData) {
+		// TODO Auto-generated method stub
+		p.setTotalCount(userDao.selectCount(searchData));
+		p=userDao.queryUserListByData(p, searchData);
+		p.setTotalPage();
+		return p;
+	}
+	@Override
+	public void updateUserPic(Users u) {
+		// TODO Auto-generated method stub
+		userDao.updatePicPath(u);
 	}
 	
 	

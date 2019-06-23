@@ -5,15 +5,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PageBean implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int pageIndex=1;//椤甸潰鏁�
 	private int pageSize;//椤甸潰澶у皬
 	private int totalCount;//鎬绘潯鏁�
 	private int totalPage;//鎬婚〉鏁�
+	@SuppressWarnings("rawtypes")
 	private List list=new ArrayList();
+	@SuppressWarnings("rawtypes")
 	public List getList() {
 		return list;
 	}
-	public void setList(List list) {
+	public void setList(@SuppressWarnings("rawtypes") List list) {
 		this.list = list;
 	}
 	public int getPageIndex() {

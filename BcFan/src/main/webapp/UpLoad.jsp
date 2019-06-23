@@ -131,7 +131,7 @@
 
 <body>
 	<!--上传其他信息-->
-		<form action="insertVedioAction" method="post" enctype="multipart/form-data" target="_parent">
+		<form action="insertVedioAction" method="post" enctype="multipart/form-data">
 			<input type="file" id="upload_file" style="display: none;" name="upload_vedio" />
 			<input type="file" id="upload_img_file" style="display: none;" name="upload_vedio_img" />
 			<input type="text" id="upload_input_vedio_title" name="upload_veido_title" style="display: none;" />
@@ -291,22 +291,23 @@
 			$("#upload_img_file").click();
 			$("#upload_img_file").change(function() {
 				//$(".upload_content_icon").css("background-image", "");
-				$(".upload_content_icon").css("border", "0px");
-				$(".upload_content_icon").empty();
+			
 			//预览	
 			var file = document.getElementById("upload_img_file").files[0];
 			if (!/image\/\w+/.test(file.type)) //判断获取的是否为图片文件
 			{
 				alert("请确保文件为图像文件");
 				return false;
-			}
+			}else{
+				$(".upload_content_icon").css("border", "0px");
+				$(".upload_content_icon").empty();
 			var reader = new FileReader();
 			reader.readAsDataURL(file);
 			reader.onload = function(e) {
 				var re = document.getElementsByClassName("upload_content_icon")[0];
 				re.innerHTML = '<img src="'+this.result+'" style="width:200px;height:125px" alt=""/>';
 			}
-				
+			}
 			})
 		})
 		 $(".upload_content_icon").hover(function() {

@@ -76,7 +76,7 @@
 
 	</div>
 	<script type="text/javascript" src="plugins/jquery-3.1.1.min.js" ></script>
-	<script language="javascript" type="text/javascript" src="plugins/calendar/WdatePicker.js"></script>
+	<script type="text/javascript" src="plugins/calendar/WdatePicker.js"></script>
 	<script>
 		var uname;
 		var sex;

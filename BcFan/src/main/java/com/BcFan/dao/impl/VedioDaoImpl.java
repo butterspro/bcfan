@@ -52,9 +52,13 @@ public class VedioDaoImpl implements VedioDao {
 	}
 
 	@Override
-	public PageBean queryVedioByData(String data) {
+	public PageBean queryVedioByData(PageBean p,String data) {
 		// TODO Auto-generated method stub
-		return null;
+		Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<Vedio> list = session.createQuery("from Vedio v where v.title like '%"+data+"%'").setFirstResult(p.startRow()).setMaxResults(p.getPageSize()).list();
+		p.setList(list);
+		return p;
 	}
 
 	@Override
@@ -72,5 +76,11 @@ public class VedioDaoImpl implements VedioDao {
 		Vedio vedio = (Vedio) query.uniqueResult();
 		return vedio;
 	}
-
+	@Override
+	public int selectCount(String data) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.getCurrentSession();
+		int count=session.createQuery("from Vedio v where v.title like '%"+data+"%'").list().size();
+		return count;
+	}
 }

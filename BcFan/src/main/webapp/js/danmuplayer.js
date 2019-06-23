@@ -4612,10 +4612,11 @@ function(a) {
 }(this, this.vttjs || {});
 
 /*
-colpick Color Picker
-Copyright 2013 Jose Vargas. Licensed under GPL license. Based on Stefan Petre's Color Picker www.eyecon.ro, dual licensed under the MIT and GPL licenses
-
-For usage and examples: colpick.com/plugin
+ * colpick Color Picker Copyright 2013 Jose Vargas. Licensed under GPL license.
+ * Based on Stefan Petre's Color Picker www.eyecon.ro, dual licensed under the
+ * MIT and GPL licenses
+ * 
+ * For usage and examples: colpick.com/plugin
  */
 
 (function($) {
@@ -4638,7 +4639,7 @@ For usage and examples: colpick.com/plugin
 				submitText: 'OK',
 				height: 156
 			},
-			//Fill the inputs of the plugin
+			// Fill the inputs of the plugin
 			fillRGBFields = function(hsb, cal) {
 				var rgb = hsbToRgb(hsb);
 				$(cal).data('colpick').fields
@@ -4655,7 +4656,7 @@ For usage and examples: colpick.com/plugin
 			fillHexFields = function(hsb, cal) {
 				$(cal).data('colpick').fields.eq(0).val(hsbToHex(hsb));
 			},
-			//Set the round selector position
+			// Set the round selector position
 			setSelector = function(hsb, cal) {
 				$(cal).data('colpick').selector.css('backgroundColor', '#' + hsbToHex({
 					h: hsb.h,
@@ -4667,18 +4668,18 @@ For usage and examples: colpick.com/plugin
 					top: parseInt($(cal).data('colpick').height * (100 - hsb.b) / 100, 10)
 				});
 			},
-			//Set the hue selector position
+			// Set the hue selector position
 			setHue = function(hsb, cal) {
 				$(cal).data('colpick').hue.css('top', parseInt($(cal).data('colpick').height - $(cal).data('colpick').height * hsb.h / 360, 10));
 			},
-			//Set current and new colors
+			// Set current and new colors
 			setCurrentColor = function(hsb, cal) {
 				$(cal).data('colpick').currentColor.css('backgroundColor', '#' + hsbToHex(hsb));
 			},
 			setNewColor = function(hsb, cal) {
 				$(cal).data('colpick').newColor.css('backgroundColor', '#' + hsbToHex(hsb));
 			},
-			//Called when the new color is changed
+			// Called when the new color is changed
 			change = function(ev) {
 				var cal = $(this).parent().parent(),
 					col;
@@ -4708,7 +4709,7 @@ For usage and examples: colpick.com/plugin
 				setNewColor(col, cal.get(0));
 				cal.data('colpick').onChange.apply(cal.parent(), [col, hsbToHex(col), hsbToRgb(col), cal.data('colpick').el, 0]);
 			},
-			//Change style on blur and on focus of inputs
+			// Change style on blur and on focus of inputs
 			blur = function(ev) {
 				$(this).parent().removeClass('colpick_focus');
 			},
@@ -4716,7 +4717,7 @@ For usage and examples: colpick.com/plugin
 				$(this).parent().parent().data('colpick').fields.parent().removeClass('colpick_focus');
 				$(this).parent().addClass('colpick_focus');
 			},
-			//Increment/decrement arrows functions
+			// Increment/decrement arrows functions
 			downIncrement = function(ev) {
 				ev.preventDefault ? ev.preventDefault() : ev.returnValue = false;
 				var field = $(this).parent().find('input').focus();
@@ -4745,7 +4746,7 @@ For usage and examples: colpick.com/plugin
 				$(document).off('mousemove', moveIncrement);
 				return false;
 			},
-			//Hue slider functions
+			// Hue slider functions
 			downHue = function(ev) {
 				ev.preventDefault ? ev.preventDefault() : ev.returnValue = false;
 				var current = {
@@ -4779,7 +4780,7 @@ For usage and examples: colpick.com/plugin
 				$(document).off('mousemove touchmove', moveHue);
 				return false;
 			},
-			//Color selector functions
+			// Color selector functions
 			downSelector = function(ev) {
 				ev.preventDefault ? ev.preventDefault() : ev.returnValue = false;
 				var current = {
@@ -4833,7 +4834,7 @@ For usage and examples: colpick.com/plugin
 				$(document).off('mousemove touchmove', moveSelector);
 				return false;
 			},
-			//Submit button
+			// Submit button
 			clickSubmit = function(ev) {
 				var cal = $(this).parent();
 				var col = cal.data('colpick').color;
@@ -4841,7 +4842,7 @@ For usage and examples: colpick.com/plugin
 				setCurrentColor(col, cal.get(0));
 				cal.data('colpick').onSubmit(col, hsbToHex(col), hsbToRgb(col), cal.data('colpick').el);
 			},
-			//Show/hide the color picker
+			// Show/hide the color picker
 			show = function(ev) {
 				// Prevent the trigger of any direct parent
 				ev.stopPropagation();
@@ -4862,7 +4863,7 @@ For usage and examples: colpick.com/plugin
 				if(cal.data('colpick').onShow.apply(this, [cal.get(0)]) != false) {
 					cal.show();
 				}
-				//Hide when user clicks outside
+				// Hide when user clicks outside
 				$('html').mousedown({
 					cal: cal
 				}, hide);
@@ -4883,7 +4884,7 @@ For usage and examples: colpick.com/plugin
 					w: window.innerWidth || (m ? document.documentElement.clientWidth : document.body.clientWidth)
 				};
 			},
-			//Fix the values if the user enters a negative or high value
+			// Fix the values if the user enters a negative or high value
 			fixHSB = function(hsb) {
 				return {
 					h: Math.min(360, Math.max(0, hsb.h)),
@@ -4924,7 +4925,7 @@ For usage and examples: colpick.com/plugin
 		return {
 			init: function(opt) {
 				opt = $.extend({}, defaults, opt || {});
-				//Set color
+				// Set color
 				if(typeof opt.color == 'string') {
 					opt.color = hexToHsb(opt.color);
 				} else if(opt.color.r != undefined && opt.color.g != undefined && opt.color.b != undefined) {
@@ -4935,36 +4936,36 @@ For usage and examples: colpick.com/plugin
 					return this;
 				}
 
-				//For each selected DOM element
+				// For each selected DOM element
 				return this.each(function() {
-					//If the element does not have an ID
+					// If the element does not have an ID
 					if(!$(this).data('colpickId')) {
 						var options = $.extend({}, opt);
 						options.origColor = opt.color;
-						//Generate and assign a random ID
+						// Generate and assign a random ID
 						var id = 'collorpicker_' + parseInt(Math.random() * 1000);
 						$(this).data('colpickId', id);
-						//Set the tpl's ID and get the HTML
+						// Set the tpl's ID and get the HTML
 						var cal = $(tpl).attr('id', id);
-						//Add class according to layout
+						// Add class according to layout
 						cal.addClass('colpick_' + options.layout + (options.submit ? '' : ' colpick_' + options.layout + '_ns'));
-						//Add class if the color scheme is not default
+						// Add class if the color scheme is not default
 						if(options.colorScheme != 'light') {
 							cal.addClass('colpick_' + options.colorScheme);
 						}
-						//Setup submit button
+						// Setup submit button
 						cal.find('div.colpick_submit').html(options.submitText).click(clickSubmit);
-						//Setup input fields
+						// Setup input fields
 						options.fields = cal.find('input').change(change).blur(blur).focus(focus);
 						cal.find('div.colpick_field_arrs').mousedown(downIncrement).end().find('div.colpick_current_color').click(restoreOriginal);
-						//Setup hue selector
+						// Setup hue selector
 						options.selector = cal.find('div.colpick_color').on('mousedown touchstart', downSelector);
 						options.selectorIndic = options.selector.find('div.colpick_selector_outer');
-						//Store parts of the plugin
+						// Store parts of the plugin
 						options.el = this;
 						options.hue = cal.find('div.colpick_hue_arrs');
 						huebar = options.hue.parent();
-						//Paint the hue bar
+						// Paint the hue bar
 						var UA = navigator.userAgent.toLowerCase();
 						var isIE = navigator.appName === 'Microsoft Internet Explorer';
 						var IEver = isIE ? parseFloat(UA.match(/msie ([0-9]{1,}[\.0-9]{0,})/)[1]) : 0;
@@ -4983,7 +4984,7 @@ For usage and examples: colpick.com/plugin
 						cal.find('div.colpick_hue').on('mousedown touchstart', downHue);
 						options.newColor = cal.find('div.colpick_new_color');
 						options.currentColor = cal.find('div.colpick_current_color');
-						//Store options and fill with default color
+						// Store options and fill with default color
 						cal.data('colpick', options);
 						fillRGBFields(options.color, cal.get(0));
 						fillHSBFields(options.color, cal.get(0));
@@ -4992,7 +4993,7 @@ For usage and examples: colpick.com/plugin
 						setSelector(options.color, cal.get(0));
 						setCurrentColor(options.color, cal.get(0));
 						setNewColor(options.color, cal.get(0));
-						//Append to body if flat=false, else show in place
+						// Append to body if flat=false, else show in place
 						if(options.flat) {
 							cal.appendTo(this).show();
 							cal.css({
@@ -5009,7 +5010,7 @@ For usage and examples: colpick.com/plugin
 					}
 				});
 			},
-			//Shows the picker
+			// Shows the picker
 			showPicker: function() {
 				return this.each(function() {
 					if($(this).data('colpickId')) {
@@ -5017,7 +5018,7 @@ For usage and examples: colpick.com/plugin
 					}
 				});
 			},
-			//Hides the picker
+			// Hides the picker
 			hidePicker: function() {
 				return this.each(function() {
 					if($(this).data('colpickId')) {
@@ -5025,7 +5026,7 @@ For usage and examples: colpick.com/plugin
 					}
 				});
 			},
-			//Sets a color as new and current (default)
+			// Sets a color as new and current (default)
 			setColor: function(col, setCurrent) {
 				setCurrent = (typeof setCurrent === "undefined") ? 1 : setCurrent;
 				if(typeof col == 'string') {
@@ -5058,7 +5059,7 @@ For usage and examples: colpick.com/plugin
 			}
 		};
 	}();
-	//Color space convertions
+	// Color space convertions
 	var hexToRgb = function(hex) {
 		var hex = parseInt(((hex.indexOf('#') > -1) ? hex.substring(1) : hex), 16);
 		return {
@@ -5174,26 +5175,29 @@ For usage and examples: colpick.com/plugin
 	});
 })(jQuery);
 
-/* ==========================================================
- * sco.tooltip71452.js
- * http://github.com/terebentina/sco.js
+/*
  * ==========================================================
- * Copyright 2013 Dan Caragea.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
+ * sco.tooltip71452.js http://github.com/terebentina/sco.js
+ * ========================================================== Copyright 2013 Dan
+ * Caragea.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ * 
  * http://apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * ========================================================== */
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License. ==========================================================
+ */
 
-/*jshint laxcomma:true, sub:true, browser:true, jquery:true, smarttabs:true, eqeqeq:false */
+/*
+ * jshint laxcomma:true, sub:true, browser:true, jquery:true, smarttabs:true,
+ * eqeqeq:false
+ */
 
 ;
 (function($, undefined) {
@@ -5365,14 +5369,17 @@ For usage and examples: colpick.com/plugin
 		contentElem: null,
 		contentAttr: null,
 		content: '',
-		hoverable: true // should mouse over tooltip71452 hold the tooltip71452 or not?
+		hoverable: true // should mouse over tooltip71452 hold the tooltip71452
+						// or not?
 			,
 		delay: 200,
 		cssclass: '',
 		position: 'n' // n,s,e,w,ne,nw,se,sw,center
 			,
 		autoclose: true,
-		appendTo: 'body' // where should the tooltip71452s be appended to (default to document.body). Added for unit tests, not really needed in real life.
+		appendTo: 'body' // where should the tooltip71452s be appended to
+							// (default to document.body). Added for unit tests,
+							// not really needed in real life.
 	};
 
 	$(document).on('mouseenter.' + pluginName, '[data-trigger="tooltip71452"]', function() {
@@ -5386,11 +5393,9 @@ For usage and examples: colpick.com/plugin
 })(jQuery);
 
 /**
- * jQuery Generic Plugin Module
- * Version 0.1
- * Copyright (c) 2011 Cyntax Technologies - http://cyntaxtech.com
- * Licensed under the Cyntax Open Technology License
- *     http://code.cyntax.com/licenses/cyntax-open-technology
+ * jQuery Generic Plugin Module Version 0.1 Copyright (c) 2011 Cyntax
+ * Technologies - http://cyntaxtech.com Licensed under the Cyntax Open
+ * Technology License http://code.cyntax.com/licenses/cyntax-open-technology
  */
 
 (function($) {
@@ -5417,15 +5422,12 @@ var cyntax = {
 };
 
 /**
- * jQuery Timer Plugin
- * Project page - http://code.cyntaxtech.com/plugins/jquery-timer
- * Version 0.1.1
- * Copyright (c) 2011 Cyntax Technologies - http://cyntaxtech.com
- * dependencies: jquery.plugin.js
- * Licensed under the Cyntax Open Technology License
- *     http://code.cyntax.com/licenses/cyntax-open-technology
- * ------------------------------------
- * For details, please visit:
+ * jQuery Timer Plugin Project page -
+ * http://code.cyntaxtech.com/plugins/jquery-timer Version 0.1.1 Copyright (c)
+ * 2011 Cyntax Technologies - http://cyntaxtech.com dependencies:
+ * jquery.plugin.js Licensed under the Cyntax Open Technology License
+ * http://code.cyntax.com/licenses/cyntax-open-technology
+ * ------------------------------------ For details, please visit:
  * http://code.cyntaxtech.com/plugins/jquery-timer
  */
 
@@ -5442,8 +5444,11 @@ var cyntax = {
 	cyntax.plugins.timer.prototype = {
 		defaults: {
 			delay: 1000, // delay in milliseconds (optional)
-			repeat: false, // true to repeat the timer continuously, or a number for repeating this number of times (optional)
-			autostart: true, // timer starts as soon as it is created, set false to start manually
+			repeat: false, // true to repeat the timer continuously, or a
+							// number for repeating this number of times
+							// (optional)
+			autostart: true, // timer starts as soon as it is created, set
+								// false to start manually
 			callback: null, // callback (optional)
 			url: '', // url to load content from (optional)
 			post: '' // post data (optional)
@@ -5509,30 +5514,31 @@ var cyntax = {
 
 })(jQuery);
 
-/*!
- * Pause jQuery plugin v0.1
- *
+/*
+ * ! Pause jQuery plugin v0.1
+ * 
  * Copyright 2010 by Tobia Conforto <tobia.conforto@gmail.com>
- *
+ * 
  * Based on Pause-resume-animation jQuery plugin by Joe Weitzel
- *
- * This program is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License as published by the Free
- * Software Foundation; either version 2 of the License, or(at your option)
- * any later version.
- *
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation; either version 2 of the License, or(at your option) any later
+ * version.
+ * 
  * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
- * more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU General Public License along with
  * this program; if not, write to the Free Software Foundation, Inc., 51
  * Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  */
-/* Changelog:
- *
- * 0.1    2010-06-13  Initial release
+/*
+ * Changelog:
+ * 
+ * 0.1 2010-06-13 Initial release
  */
 (function() {
 	var $ = jQuery,
@@ -5608,11 +5614,10 @@ var cyntax = {
 	};
 })();
 
-/*!
- *弹幕引擎核心
- *
- * Copyright 2015 by Liyawei Of AcGit.cc 
- * @license MIT
+/*
+ * ! 弹幕引擎核心
+ * 
+ * Copyright 2015 by Liyawei Of AcGit.cc @license MIT
  */
 
 ;
@@ -5650,7 +5655,7 @@ var cyntax = {
 			autostart: false,
 			callback: function(index) {
 				heig = $(element).height();
-				//row_conut=parseInt(heig/options.font_size_big);
+				// row_conut=parseInt(heig/options.font_size_big);
 				if($(element).data("danmu_array")[$(element).data("nowtime")]) {
 					var danmus = $(element).data("danmu_array")[$(element).data("nowtime")];
 					for(var i = 0; i < danmus.length; i++) {
@@ -5678,13 +5683,14 @@ var cyntax = {
 						}
 						if(danmus[i].size == 0) $("#linshi").css("font-size", options.font_size_small);
 						if(danmus[i].position == 0) {
-							//var top_local=parseInt(30+(options.height-60)*Math.random());//随机高度
+							// var
+							// top_local=parseInt(30+(options.height-60)*Math.random());//随机高度
 							var row = parseInt(row_conut * Math.random());
 							while(rows_used.indexOf(row) >= 0) {
 								var row = parseInt(row_conut * Math.random());
 							}
 							rows_used.push(row);
-							//console.log(rows_used.length);
+							// console.log(rows_used.length);
 							if(rows_used.length == row_conut) {
 								rows_used = new Array();
 								row_conut = parseInt(heig / options.font_size_big);
@@ -5732,9 +5738,9 @@ var cyntax = {
 								$(element).data("bottomspace", $(element).data("bottomspace") - options.font_size_big)
 							});
 
-						} //else if
+						} // else if
 					} // for in danmus
-				} //if (danmus)
+				} // if (danmus)
 				$(element).data("nowtime", $(element).data("nowtime") + 1);
 
 			}
@@ -5834,11 +5840,11 @@ var cyntax = {
 			$(".vjs-live-controls").remove();
 
 			function query() {
-				
+				console.log('s');
 				$.get(options.url_to_get_danmu, function(data, status) {
 					var danmu_from_sql = eval("("+data.str+")");
 					 $.each(danmu_from_sql, function(index, value) {
-						var text_obj = '{ "text":"' + value.text + '","color":"' + "#fff" + '","size":"' + "1" + '","position":"' + 0 + '","time":' + 154 + ',"isnew":""}';
+						var text_obj = '{ "text":"' + value.text + '","color":"' + value.color + '","size":"' + value.size + '","position":"' +value.position + '","time":' + value.time + ',"isnew":""}';
 						var new_obj = eval('(' + text_obj + ')');
 						jQuery('#danmu71452').danmu("add_danmu", new_obj);
 					  });
@@ -5909,7 +5915,8 @@ var cyntax = {
 			$("body").append("<div id='tip2' class='tipb' hidden='true'><form  id='danmu_position'>弹幕位置：<input type='radio' checked='checked'  name='danmu_position' value='0' />滚动&nbsp;&nbsp;<input type='radio' name='danmu_position' value='1' />顶端&nbsp;&nbsp;<input type='radio' name='danmu_position' value='2' />底端&nbsp;&nbsp;</form><form  id='danmu_size' >弹幕大小：<input   type='radio' checked='checked'  name='danmu_size' value='1' />大文字&nbsp;&nbsp;<input   type='radio' n name='danmu_size' value='0' />小文子&nbsp;&nbsp;</form>弹幕颜色：<br><div id='danmu_color' /></div></div><div id='tip22' class='tipb' hidden='true'>透明度：<input type='range' name='op' id='op' onchange='op()' value=100 ><br>显示弹幕:<input type='checkbox' checked='checked' id='ishide' value='is' onchange='changehide()'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;循环播放:<input type='checkbox' id='isloop' value='is' onchange='changeloop()'> </div> ");
 
 			$(".vjs-control-bar").append('<span class="shezhi " id="danmu_send_opt">(&gt;^ω^&lt;)</span>');
-			$(".vjs-control-bar").append('<input  role="botton" type="textarea" id="danmu_text" max=300 />'); // -> button 
+			$(".vjs-control-bar").append('<input  role="botton" type="textarea" id="danmu_text" max=300 />'); // ->
+																												// button
 			$(".vjs-control-bar").append('<button  id="send_danmu" type="button" aria-live="polite" onclick="send_danmu()">发送</botton>');
 
 			$(".vjs-control-bar").append('<span  class="shezhi  vjs-menu-button" id="danmu_shi_opt"  > 視 </span>');
@@ -6003,7 +6010,6 @@ jQuery(document).ready(function() {
 });
 
 function send_danmu() {
-	console.log("发送弹幕");
 	var text = document.getElementById('danmu_text').value;
 	var color = danmu_color;
 	var position_select = jQuery("[name='danmu_position']").filter(":checked");
@@ -6012,32 +6018,26 @@ function send_danmu() {
 	var size = position_size.attr("value");
 	var time = jQuery('#danmu71452').data("nowtime") + 5;
 	var text_obj = '{ "text":"' + text + '","color":"' + color + '","size":"' + size + '","position":"' + position + '","time":' + time + '}';
+	console.log(time.getType());
 	var obj = eval('(' + text_obj + ')');
-	
-	
 	if(url_to_post_danmu){
-		/*		jQuery.post(url_to_post_danmu, {
-					danmu: text_obj,
-				});*/
 				$.ajax({
 					url:"setBarrageByVid",
 					type:"post",
+					dataType:"json",
 					data:{
 						'danmu.text': obj.text,
 						'danmu.color': obj.color,
 						'danmu.size': obj.size,
 						'danmu.position': obj.position,
 						'danmu.time': obj.time
-					},
-					dataType:"json"
+					}
 				});
 			}
 	var text_obj = '{ "text":"' + text + '","color":"' + color + '","size":"' + size + '","position":"' + position + '","time":' + time + ',"isnew":""}';
 	var new_obj = eval('(' + text_obj + ')');
 	jQuery('#danmu71452').danmu("add_danmu", new_obj);
-	/*console.log(text_obj);*/
 	document.getElementById('danmu_text').value = '';
-	console.log("dsadsada");
 };
 
 function op() {

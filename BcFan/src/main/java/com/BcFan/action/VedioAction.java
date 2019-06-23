@@ -7,23 +7,30 @@ import java.io.FileOutputStream;
 import java.nio.channels.FileChannel;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-import org.apache.catalina.User;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+
+import com.BcFan.biz.UserBiz;
 import com.BcFan.biz.VedioBiz;
 import com.BcFan.entity.Users;
 import com.BcFan.entity.Vedio;
-import com.BcFan.entity.VedioType;
-import com.opensymphony.xwork2.ActionContext;
+import com.BcFan.util.PageBean;
+import com.BcFan.util.ToolUtil;
+
+import net.sf.json.JSONObject;
 
 @Controller("vedioAction")
 public class VedioAction implements SessionAware{
 	@Autowired
 	private VedioBiz vedioBiz;
+	@Autowired
+	private UserBiz userBiz;
 	private File upload_vedio;
 	private File upload_vedio_img;
 	private String upload_vedioFileName;
@@ -32,7 +39,10 @@ public class VedioAction implements SessionAware{
 	private int upload_vedio_fenqu;
 	private String upload_vedio_textarea;
 	private Map<String, Object> session;
-
+	private String searchData;//查询字段
+	private PageBean userPageBean;
+	private PageBean vedioPageBean;
+	private String str;//返回的json数据
 	public Map<String, Object> getSession() {
 		return session;
 	}
@@ -105,7 +115,46 @@ public class VedioAction implements SessionAware{
 	}
 	
 	
+	public String getSearchData() {
+		return searchData;
+	}
+
+	public void setSearchData(String searchData) {
+		this.searchData = searchData;
+	}
+
+	public PageBean getUserPageBean() {
+		return userPageBean;
+	}
+
+	public void setUserPageBean(PageBean userPageBean) {
+		this.userPageBean = userPageBean;
+	}
+
+	public PageBean getVedioPageBean() {
+		return vedioPageBean;
+	}
+
+	public void setVedioPageBean(PageBean vedioPageBean) {
+		this.vedioPageBean = vedioPageBean;
+	}
+
+	public String getStr() {
+		return str;
+	}
+
+	public void setStr(String str) {
+		this.str = str;
+	}
 	
+	public UserBiz getUserBiz() {
+		return userBiz;
+	}
+
+	public void setUserBiz(UserBiz userBiz) {
+		this.userBiz = userBiz;
+	}
+
 	@SuppressWarnings("resource")
 	public String insertVedioAction() throws Exception {
 		String path=ServletActionContext.getServletContext().getRealPath("\\")+"upload\\vedio";
@@ -114,28 +163,26 @@ public class VedioAction implements SessionAware{
 		File newFile=null;
 		FileChannel in=null;
 		FileChannel out=null;
-		try {		 
-			 newFile=new File(img_path, upload_vedio_imgFileName);
+		try {
+			//图片路径名字
+			String newFileName=ToolUtil.getNewFileName(upload_vedio_imgFileName);
+			//视频路径名字
+			String vedioName=(String) session.get("VedioFileName");		
+			 newFile=new File(img_path, newFileName);
 			 in=new FileInputStream(upload_vedio_img).getChannel();
 			 out=new FileOutputStream(newFile).getChannel();
-			 in.transferTo(0, in.size(), out);
-			 
+			 in.transferTo(0, in.size(), out);		 
 			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			Vedio vedio=new Vedio(); 	
 			vedio.setVedioIntroduce(upload_vedio_textarea);
 			vedio.setTitle(upload_veido_title);
-			vedio.setImgPath(img_path);
-			vedio.setVedioPath(path);
+			vedio.setImgPath("upload\\vedioImg\\"+newFileName);
+			vedio.setVedioPath("upload\\vedio\\"+vedioName);
 			Date date=df.parse(df.format(new Date()));
 			vedio.setUpLoadTime(date);	
-			//还差个uid
+	
 			int uid=((Users)session.get("loginUser")).getUid();
 			vedioBiz.CheckVedio(vedio,upload_vedio_fenqu,uid);
-			
-			
-		     
-		     
-			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -143,9 +190,24 @@ public class VedioAction implements SessionAware{
 			in.close();
 			out.close();
 		}
-		
-		
-		
+		session.remove("VedioFileName");
 		return "success";
 	}
+	//搜索
+		public String search() {
+			Map<String, PageBean> dataMap=new HashMap<String, PageBean>();
+			userPageBean=userBiz.getUsersListBySearchData(userPageBean, searchData);
+			vedioPageBean=vedioBiz.getVedioBySearchData(vedioPageBean, searchData);
+			dataMap.put("userPageBean",userPageBean);
+			dataMap.put("vedioPageBean",vedioPageBean);
+			JSONObject jo=JSONObject.fromObject(dataMap);
+			str = jo.toString();
+			return "success";
+		}
+		//审核未通过的视频
+		public String queryAllAduio() {
+			List<Vedio> list=vedioBiz.queryNotAudioVedio();
+			session.put("NotAudioList", list);
+			return "success";
+		}
 }

@@ -3,13 +3,14 @@ package com.BcFan.util;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 
-import org.apache.struts2.ServletActionContext;
-import org.springframework.stereotype.Controller;
-
 public class QueryCookie extends HttpServlet implements Runnable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	public void run() {
 		// TODO Auto-generated method stub

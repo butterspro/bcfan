@@ -10,7 +10,7 @@ public interface VedioDao {
 	public List<Vedio> queryAllVedio();
 
 	// ��ҳ��ѯ
-	public PageBean queryVedioByData(String data);
+	public PageBean queryVedioByData(PageBean p,String data);
 
 	// ��ѯ�û�����Ƶ
 	public List<Vedio> queryVedioByUid(int uid);
@@ -20,4 +20,6 @@ public interface VedioDao {
 	
 	//获取某视频的信息
 	public Vedio queryVedio(int vid);
+	//根据查询信息查询视频的总条数
+	public int selectCount(String data);
 }

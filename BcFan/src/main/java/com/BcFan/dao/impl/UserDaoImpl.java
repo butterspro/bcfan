@@ -16,7 +16,6 @@ import com.BcFan.util.PageBean;
 @Repository
 @Transactional
 public class UserDaoImpl implements UserDao {
-	private static final Class UserType = null;
 	@Autowired
 	private SessionFactory sessionFactory;
 
@@ -31,8 +30,11 @@ public class UserDaoImpl implements UserDao {
 	public Users selectUserByUsernameAndPwd(String telOrName, String password) {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.getCurrentSession();
-		System.out.println("userDao-->"+telOrName+" "+password);
-		Users user = (Users) session.createQuery("from Users u where (u.uname=? and u.upassword=?) or (u.tel=? and u.upassword=?)").setString(0, telOrName).setString(1, password).setString(2, telOrName).setString(3, password).uniqueResult();
+		System.out.println("userDao-->" + telOrName + " " + password);
+		Users user = (Users) session
+				.createQuery("from Users u where (u.uname=? and u.upassword=?) or (u.tel=? and u.upassword=?)")
+				.setString(0, telOrName).setString(1, password).setString(2, telOrName).setString(3, password)
+				.uniqueResult();
 		System.out.println(user);
 		return user;
 	}
@@ -99,7 +101,10 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public void updatePicPath(Users u) {
 		// TODO Auto-generated method stub
-		
+		Session session = sessionFactory.getCurrentSession();
+		Users user = (Users) session.get(Users.class, u.getUid());
+		user.setPicPath(u.getPicPath());
+		session.update(user);
 	}
 
 	@Override
@@ -118,6 +123,25 @@ public class UserDaoImpl implements UserDao {
 	public PageBean queryUserListByData(String data) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public PageBean queryUserListByData(PageBean p, String data) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("unchecked")
+		List<Users> list = session.createQuery("from Users u where u.uname like '%"+data+"%'").setFirstResult(p.startRow()).setMaxResults(p.getPageSize()).list();
+		p.setList(list);
+		return p;
+	}
+
+	@Override
+	public int selectCount(String data) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.getCurrentSession();
+		int count = (int) session.createQuery("from Users u where u.uname like '%"+data+"%'").list().size();
+		
+		return count;
 	}
 
 }

@@ -28,4 +28,10 @@ public class BarrageBizImpl implements BarrageBiz {
 		// TODO Auto-generated method stub
 		return barrageDao.queryBarrageByVid(vid);
 	}
+
+	@Override
+	public void insertBarrageByVidAndUid(Barrage barrage) {
+		// TODO Auto-generated method stub
+		barrageDao.insertBarrageByVidAndUid(barrage);
+	}
 }

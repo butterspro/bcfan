@@ -2,13 +2,15 @@ package com.BcFan.action;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import com.BcFan.biz.BarrageBiz;
 import com.BcFan.biz.VedioBiz;
-import com.BcFan.entity.Test;
+import com.BcFan.entity.Barrage;
+import com.opensymphony.xwork2.ActionContext;
 
 import net.sf.json.JSONArray;
 
@@ -16,19 +18,10 @@ import net.sf.json.JSONArray;
 public class BarrageAction {
 	@Autowired
 	private VedioBiz vedioBiz;
-	private Test test;
 	private String str;
-	private Test danmu;
+	private Barrage danmu;
 	@Autowired
 	private BarrageBiz barrageBiz;
-
-	public BarrageBiz getBarrageBiz() {
-		return barrageBiz;
-	}
-
-	public void setBarrageBiz(BarrageBiz barrageBiz) {
-		this.barrageBiz = barrageBiz;
-	}
 
 	public VedioBiz getVedioBiz() {
 		return vedioBiz;
@@ -36,14 +29,6 @@ public class BarrageAction {
 
 	public void setVedioBiz(VedioBiz vedioBiz) {
 		this.vedioBiz = vedioBiz;
-	}
-
-	public Test getTest() {
-		return test;
-	}
-
-	public void setTest(Test test) {
-		this.test = test;
 	}
 
 	public String getStr() {
@@ -54,42 +39,42 @@ public class BarrageAction {
 		this.str = str;
 	}
 
-	public Test getDanmu() {
+	public Barrage getDanmu() {
 		return danmu;
 	}
 
-	public void setDanmu(Test danmu) {
+	public void setDanmu(Barrage danmu) {
 		this.danmu = danmu;
 	}
 
+	public BarrageBiz getBarrageBiz() {
+		return barrageBiz;
+	}
+
+	public void setBarrageBiz(BarrageBiz barrageBiz) {
+		this.barrageBiz = barrageBiz;
+	}
+
 	// 从数据库获得弹幕传到前端显示
+	@SuppressWarnings("unchecked")
 	public String getAllBarrageByVid() {
-		/*
-		 * ActionContext actionContext = ActionContext.getContext();
-		 * 
-		 * @SuppressWarnings("rawtypes") Map session = actionContext.getSession();
-		 * List<Barrage> barrageList = barrageBiz.queryBarrageByVid(22);
-		 * session.put("vedioMain", vedioBiz.getVedioOnVedioMain(22));
-		 * session.put("barrageList", barrageList);
-		 */
-		Test test = new Test("hh", "#ffffff", 1, 0, 154, "");
-		Test test1 = new Test("hh", "#ffffff", 1, 0, 154, "");
-		List<Test> list = new ArrayList<Test>();
-		list.add(test);
-		list.add(test1);
+		System.out.println("123");
+		ActionContext actionContext = ActionContext.getContext();
+		@SuppressWarnings("rawtypes")
+		Map session = actionContext.getSession();
+		List<Barrage> barrageList = barrageBiz.queryBarrageByVid(29);
+		List<Barrage> list = new ArrayList<Barrage>();
+		list.addAll(barrageList);
 		JSONArray jo = JSONArray.fromObject(list);
 		str = jo.toString();
-		System.out.println(jo);
+		session.put("vedioMain", vedioBiz.getVedioOnVedioMain(29));
+		session.put("barrageList", barrageList);
 		return "success";
 	}
 
 	// 把弹幕存到数据库
 	public String setBarrageByVid() {
-		System.out.println(danmu.getColor());
-		System.out.println(danmu.getPosition());
-		System.out.println(danmu.getSize());
-		System.out.println(danmu.getText());
-		System.out.println(danmu.getTime());
+		barrageBiz.insertBarrageByVidAndUid(danmu);
 		return "success";
 	}
 }

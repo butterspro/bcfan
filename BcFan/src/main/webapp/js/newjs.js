@@ -19,12 +19,14 @@ window.onload = function() {
 var stime;
 $(function() {
 	$("#head_pic").mouseenter(function() {
-		$("#head_hidden").fadeIn();
+		clearTimeout(stime);
+		//$("#head_hidden").fadeIn();
 		$("#head_hidden").css("display", "block");
 	})
 	$("#head_pic").mouseleave(function() {
 		stime=setTimeout(function() {
-			$("#head_hidden").fadeOut();
+		//	$("#head_hidden").fadeOut();
+			$("#head_hidden").css("display", "none");
 		}, 100);
 		
 	$("#head_hidden").mouseenter(function() {
@@ -62,3 +64,6 @@ $(function() {
 			$("#Login_head_img").animate({height:"40px",width:"40px"},"fast");
 		})			
 		})
+	
+		
+		

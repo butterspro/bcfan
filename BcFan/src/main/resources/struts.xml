@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
-	<constant name="struts.multipart.maxSize" value="9000000000"/>
- 	<package name="first" namespace="/" extends="struts-default">
-		<!-- 检查登录-->
-		<action name="checkLogin" class="userAction" method="checkLogin">
-			<result type="redirect">/login.jsp</result>
+	<constant name="struts.multipart.maxSize" value="9000000000" />
+	<package name="first" namespace="/" extends="struts-default">
+		<!-- 检查登录 -->
+		<action name="checkLogin" class="userAction"
+			method="checkLogin">
+			<result type="redirect">/bcfanMain.jsp</result>
 			<result name="login" type="redirect">/login.jsp</result>
 		</action>
-		
+
 		<!-- 退出登录 -->
 		<action name="logout" class="userAction" method="logout">
 			<result>/login.jsp</result>
@@ -18,49 +19,55 @@
 			<result name="success" type="redirect">/buffer.jsp</result>
 		</action>
 		<!-- 上传 -->
-		<action name="insertVedioAction" class="vedioAction" method="insertVedioAction">
-<!-- 		  <interceptor-ref name="insertVedioAction">  
-               <param name="maximumSize">5242880</param>  
-           </interceptor-ref>   -->
-         <interceptor-ref name="defaultStack"/>         
-			<result>/login.jsp</result>	
+		<action name="insertVedioAction" class="vedioAction"
+			method="insertVedioAction">
+			<!-- <interceptor-ref name="insertVedioAction"> <param name="maximumSize">5242880</param> 
+				</interceptor-ref> -->
+			<interceptor-ref name="defaultStack" />
+			<result>/login.jsp</result>
 		</action>
 		<!-- 视频type类型 -->
-		<action name="showAlltype" class="vediotypeAction" method="showAlltype">
+		<action name="showAlltype" class="vediotypeAction"
+			method="showAlltype">
 			<result type="redirect">/UpLoad.jsp</result>
 		</action>
-		
-		<action name="test" class="testaction" method="test">
-				<result></result>
+		<!-- 修改用户头像 -->
+		<action name="UpdatePic" class="updatepicaction"
+			method="UpdatePic">
+			<result>/main.jsp</result>
 		</action>
-		<!--获取某视频的所有弹幕-->
-		<!-- <action name="barrageAction" class="barrageAction" method="getAllBarrageByVid">
-			<result type="redirect">/vedioMain.jsp</result>
-		</action> -->
-	</package> 
+		<!-- 上传视频 -->
+		<action name="test" class="testaction" method="test">
+			<result></result>
+		</action>
+		<!--获取某视频的所有弹幕 -->
+		<!-- <action name="barrageAction" class="barrageAction" method="getAllBarrageByVid"> 
+			<result type="redirect">/vedioMain.jsp</result> </action> -->
+	</package>
 	<!-- 以下ajax -->
 	<package name="second" namespace="/" extends="json-default">
 		<!-- 检查登录 -->
-		<!-- <action name="checkLogin" class="userAction" method="checkLogin">
-			<result name="success" type="json">
-				<param name="includeProperties">message</param>
-			</result>
-		</action> -->
+		<!-- <action name="checkLogin" class="userAction" method="checkLogin"> 
+			<result name="success" type="json"> <param name="includeProperties">message</param> 
+			</result> </action> -->
 		<!-- 检查登录状态 -->
-		<action name="checkLoginStatus" class="userAction" method="checkLoginStatus">
+		<action name="checkLoginStatus" class="userAction"
+			method="checkLoginStatus">
 			<result name="success" type="json">
 				<param name="includeProperties">message</param>
 				<param name="includeProperties">sessionId</param>
 			</result>
 		</action>
 		<!-- 检查用户名是否合法 -->
-		<action name="checkUsername" class="userAction" method="checkUsername">
+		<action name="checkUsername" class="userAction"
+			method="checkUsername">
 			<result name="success" type="json">
 				<param name="includeProperties">message</param>
 			</result>
 		</action>
 		<!-- 检查邀请码是否合法 -->
-		 <action name="checkBcNum" class="bcNumAction" method="checkBcNum">
+		<action name="checkBcNum" class="bcNumAction"
+			method="checkBcNum">
 			<result name="success" type="json">
 				<param name="includeProperties">message</param>
 			</result>
@@ -84,24 +91,33 @@
 			</result>
 		</action>
 		<!-- 修改用户信息 -->
-		<action name="modifyUser" class="userAction" method="modifyUser">
+		<action name="modifyUser" class="userAction"
+			method="modifyUser">
 			<result name="success" type="json">
 				<param name="includeProperties">message</param>
 			</result>
 		</action>
 		<!-- 从数据库获得弹幕传到前端显示 -->
-		<action name="barrageAction" class="barrageAction" method="getAllBarrageByVid">
+		<action name="barrageAction" class="barrageAction"
+			method="getAllBarrageByVid">
 			<result type="json">
 				<param name="includeProperties">str</param>
 			</result>
 		</action>
 		<!-- 把弹幕存到数据库 -->
-		<action name="setBarrageByVid" class="barrageAction" method="setBarrageByVid">
+		<action name="setBarrageByVid" class="barrageAction"
+			method="setBarrageByVid">
 			<result type="json">
 				<param name="includeProperties">str</param>
 			</result>
 		</action>
+		<!-- 搜索 -->
+		<action name="search" class="vedioAction" method="search">
+			<result name="success" type="json">
+				<param name="includeProperties">str</param>
+			</result>
+		</action>
 	</package>
-	
-	
+
+
 </struts>    

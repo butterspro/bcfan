@@ -1,18 +1,23 @@
 package com.BcFan.biz;
 
 import com.BcFan.entity.Users;
+import com.BcFan.util.PageBean;
 
 public interface UserBiz {
-	//¼ì²éµÇÂ¼
+	//ï¿½ï¿½ï¿½ï¿½Â¼
 	public Users checkLogin(String telOrName,String password);
-	//¸ù¾İÓÃ»§Ãû²éÓÃ»§
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½
 	public Users getUsersByUsername(String username);
-	//¸ù¾İµç»°²éÓÃ»§
+	//ï¿½ï¿½ï¿½İµç»°ï¿½ï¿½ï¿½Ã»ï¿½
 	public Users getUsersByTel(String tel);
-	//Ìí¼ÓÓÃ»§
+	//ï¿½ï¿½ï¿½ï¿½Ã»ï¿½
 	public void addUser(Users u,String bcNum);
-	//ĞŞ¸ÄÓÃ»§ÃÜÂë
+	//ï¿½Ş¸ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½
 	public void modifyUser(Users u);
-	//ĞŞ¸ÄÓÃ»§»ù±¾ĞÅÏ¢
+	//ï¿½Ş¸ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	public void modifyUserInfo(Users u);
+	//æ ¹æ®æœç´¢çš„ä¿¡æ¯å¾—åˆ°ç”¨æˆ·çš„åˆ†é¡µä¿¡æ¯
+	public PageBean getUsersListBySearchData(PageBean p,String searchData);
+	//ä¿®æ”¹ç”¨æˆ·å¤´åƒ
+	public void updateUserPic(Users u);
 }

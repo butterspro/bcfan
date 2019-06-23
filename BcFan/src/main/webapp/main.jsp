@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +8,7 @@
 <title>个人中心</title>
 <link rel="stylesheet" href="css/center.css" />
 <link rel="stylesheet" href="css/main.css" />
+<link rel="stylesheet" href="css/newcss.css" />
 </head>
 <body>
 	<!--头部开始-->
@@ -36,25 +38,68 @@
 				<!--导航结束-->
 				<div class="fr">
 					<ul>
-						<li class="nav-item profile-info"><a href="#" class="t">
+						<li class="nav-item profile-info">
+						<!-- <a href="#" class="t">
 								<div class="i-face">
 									<img src="img/akari.jpg" />
 
 								</div>
+							</a> -->
+							<!--未登录前-->
+							<div  <c:if test="${loginUser!=null}">style="display: none;"</c:if> >
+								<div id="head_pic">
+									<img src="img/akari.jpg" style="width: 40px; height: 40px;" />
+								</div>
+								<!--头像框-->
+								<div id="head_hidden">
+									<p
+										style="font-size: 13px; margin-left: 13px; text-align: left;">登录后你可以</p>
+									<div id="head_hidden_pic">
+										<ul>
+											<li><img src="img/danmu.png" /> <img
+												src="img/danmu.png" /> <img src="img/danmu.png" /> <img
+												src="img/danmu.png" /></li>
+										</ul>
+									</div>
+									<div id="head_log">
+										<a id="head_login">登录</a>
+										<p>
+											首次使用？点我去<a href="register.jsp">注册</a>
+										</p>
+									</div>
+								</div>
+							</div> 
+							<!--登录后-->
+							<div class="Login_after" <c:if test="${loginUser==null}">style="display: none;"</c:if>>
+								<div id="Login_head_pic">
+									<img id="Login_head_img" src="${loginUser.picPath}"
+										style="width: 40px; height: 40px;" />
+								</div>
+								<div id="Login_head_hidden">
+									<p style="margin: 35px auto;">${loginUser.uname } </p>
+									<a href="main.jsp">
+										<p>个人中心</p>
+									</a> <a>
+										<p>投稿管理</p>
+									</a> <a>
+										<p>退出</p>
+									</a>
+								</div>
 
-						</a></li>
-						<li class="nav-item"><a href="#" class="t">历史</a></li>
+							</div>
+						</li>
+						<li class="nav-item"><a href="#" class="t" style="visibility: hidden;">历史</a></li>
 					</ul>
 				</div>
 				<div class="fr">
 					<div class="nav-search-box">
 						<div class="nav-search ">
-							<form id="nav_searchform">
+							<!-- <form id="nav_searchform"> -->
 								<input type="text" class="nav-search-keyword"
-									placeholder="命运之夜,黑暗将至" />
-								<button type="submit" class="nav-search-submit"></button>
+									placeholder="命运之夜,黑暗将至"  id="searchData"/>
+								<button  class="nav-search-submit"></button>
 
-							</form>
+							<!-- </form> -->
 						</div>
 					</div>
 
@@ -97,6 +142,7 @@
 		</div>
 	</div>
 	<script type="text/javascript" src="plugins/jquery-3.1.1.min.js" ></script>
+	<script type="text/javascript" src="js/newjs.js"></script>
 	<script>
 		function init() {
 			var firstLi = $("#leftFrame ul li").eq(0);

@@ -37,4 +37,11 @@ public class BarrageDaoImpl implements BarrageDao {
 		return list;
 	}
 
+	@Override
+	public void insertBarrageByVidAndUid(Barrage barrage) {
+		// TODO Auto-generated method stub
+		Session session = factory.getCurrentSession();
+		session.save(barrage);
+	}
+
 }

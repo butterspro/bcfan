@@ -8,7 +8,7 @@
 	-webkit-border-radius: 165px;
 	-moz-border-radius: 165px;
 	overflow: hidden;
-
+	cursor: pointer;
 	
 }
 #head_hidden {

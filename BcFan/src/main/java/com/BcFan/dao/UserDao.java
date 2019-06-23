@@ -6,28 +6,32 @@ import com.BcFan.entity.Users;
 import com.BcFan.util.PageBean;
 
 public interface UserDao {
-	//¸ù¾İÓÃ»§ÃûºÍÃÜÂë»òÕßÊÖ»úºÅºÍÓÃ»§Ãû²éÑ¯ÓÃ»§
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö»ï¿½ï¿½Åºï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½Ã»ï¿½
 	public Users selectUserByUsernameAndPwd(String telOrName,String password);
-	//¸ù¾İ¸ù¾İÓÃ»§id²éÑ¯µÇÂ¼×´Ì¬
+	//ï¿½ï¿½ï¿½İ¸ï¿½ï¿½ï¿½ï¿½Ã»ï¿½idï¿½ï¿½Ñ¯ï¿½ï¿½Â¼×´Ì¬
 	public int selectStateByUid(int uid);
-	//¸ù¾İÓÃ»§id¸Ä±äÓÃ»§×´Ì¬
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½idï¿½Ä±ï¿½ï¿½Ã»ï¿½×´Ì¬
 	public void updateStateByUid(int uid,int status);
-	//¸ù¾İÓÃ»§Ãû²éÓÃ»§
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½
 	public Users selectByUsername(String username);
-	//¸ù¾İµç»°²éÓÃ»§
+	//ï¿½ï¿½ï¿½İµç»°ï¿½ï¿½ï¿½Ã»ï¿½
 	public Users selectByTel(String tel);
-	//Ìí¼ÓÓÃ»§
+	//ï¿½ï¿½ï¿½ï¿½Ã»ï¿½
 	public void insertUser(Users u);
-	//ĞŞ¸ÄÓÃ»§Í¨¹ıÃÜÂë
+	//ï¿½Ş¸ï¿½ï¿½Ã»ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public void updateUser(Users u);
-	//¸ù¾İêÇ³Æ,³öÉúÄêÔÂ,ĞÔ±ğ,¼ò½éĞŞ¸ÄÓÃ»§
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ç³ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½Ô±ï¿½,ï¿½ï¿½ï¿½ï¿½Ş¸ï¿½ï¿½Ã»ï¿½
 	public void updateUserByUnameAndBirthdayAndSexAndSign(Users u);
-	//ĞŞ¸ÄÍ·Ïñ
+	//ï¿½Ş¸ï¿½Í·ï¿½ï¿½
 	public void updatePicPath(Users u);
-	//²éÑ¯·ÛË¿
+	//ï¿½ï¿½Ñ¯ï¿½ï¿½Ë¿
 	public List<Users> queryFansNumByUid(Users u);
-	//²éÑ¯×Ô¼º¹Ø×¢µÄÈË
+	//ï¿½ï¿½Ñ¯ï¿½Ô¼ï¿½ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½
 	public List<Users> queryfocusUser(Users u);
-	//Ä£ºı²éÑ¯ËùÓĞÓÃ»§·ÖÒ³
+	//Ä£ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ò³
 	public PageBean queryUserListByData(String data);
+	//æ ¹æ®æ•°æ®æ¨¡ç³ŠæŸ¥è¯¢æ‰€æœ‰ç”¨æˆ·åˆ†é¡µ
+	public PageBean queryUserListByData(PageBean p,String data);
+	//æ ¹æ®æ•°æ®æŸ¥è¯¢ç”¨æˆ·æ•°é‡
+	public int selectCount(String data);
 }
